@@ -7,15 +7,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
-  <script type="text/javascript" language="javascript" src="datatables/media/js/jquery.js"></script>
-  <script type="text/javascript" language="javascript" src="datatables/media/js/jquery.dataTables.js"></script>
+  <script type="text/javascript" language="javascript" src="js/jquery-2.1.0.min.js"></script>
   <script type="text/javascript" language="javascript" src="js/bootstrap.min.js"></script>
   <script type="text/javascript" language="javascript" src="js/moment.min.js"></script>
-  <script type="text/javascript" language="javascript" src="js/transit.min.js"></script>
   
   <style type="text/css" title="currentStyle">
-	@import "datatables/media/css/demo_page.css";
-	@import "datatables/media/css/demo_table.css";
 	@import "style/font.css";
 	@import "css/bootstrap.min.css";
 	@import "css/bootstrap-theme.min.css";
