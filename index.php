@@ -12,7 +12,7 @@
   <script type="text/javascript" language="javascript" src="js/moment.min.js"></script>
   
   <style type="text/css" title="currentStyle">
-	@import "style/font.css";
+	@import "css/font.css";
 	@import "css/bootstrap.min.css";
 	@import "css/bootstrap-theme.min.css";
   </style>

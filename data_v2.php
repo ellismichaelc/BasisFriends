@@ -32,11 +32,10 @@ while($user = mysql_fetch_array($result)) {
 		var_dump(unserialize($user_days[ $yesterday ]['data']));
 	}
 	
-	$pulse = 0;
-	$step_goal = $cal_goal = $cals = $steps = $sleep = $sleepq = "--";
+	$step_goal = $pulse = $cal_goal = $cals = $steps = $sleep = $sleepq = "--";
 
 	if($user_feed) {
-		$pulse     = round($user_data['resting_heartrate']);
+		if($user_data['resting_heartrate'] > 0) $pulse = round($user_data['resting_heartrate']);
 		$step_goal = $user_data['steps_goal'];
 		$cal_goal  = $user_data['calories_goal'];
 		$cals      = $user_data['calories'] . " burned";
@@ -45,7 +44,7 @@ while($user = mysql_fetch_array($result)) {
 
 	if($old_data) {
 
-		if($pulse == 0) $pulse = round($old_data['resting_heartrate']);
+		if(!is_numeric($pulse) && $old_data['resting_heartrate'] > 0) $pulse = round($old_data['resting_heartrate']);
 
 		if($old_data['sleep'] > 0) {
 			$sleep  = $old_data['sleep'];
@@ -53,6 +52,8 @@ while($user = mysql_fetch_array($result)) {
 		}
 	
 	}
+	
+	if(is_numeric($pulse)) $pulse = $pulse  . " BPM";
 	
 	$name   = explode(" ", $name);
 	$name   = $name[0] . " " . $name[1][0] . ".";
@@ -106,7 +107,7 @@ while($user = mysql_fetch_array($result)) {
 
     $output[] = array("id"     => $user['id'], 
     	  			  "name"   => $name, 
-    	  			  "pulse"  => $pulse . " BPM", 
+    	  			  "pulse"  => $pulse, 
     	  			  "cals"   => $cals, 
     	  			  "steps"  => $steps, 
     	  			  "syncd"  => $syncd,
