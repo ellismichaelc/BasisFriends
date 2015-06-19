@@ -1,1 +1,1 @@
-D:\root\bin\php\php5.4.3\php.exe D:\root\www\folio\basis\process.php
+D:\root\wamp\bin\php\php5.5.12\php.exe D:\root\www\folio\basis\process.php

@@ -105,17 +105,21 @@ while($user = mysql_fetch_array($result)) {
 						  "type"        => $type);
 	}
 
-    $output[] = array("id"     => $user['id'], 
-    	  			  "name"   => $name, 
-    	  			  "pulse"  => $pulse, 
-    	  			  "cals"   => $cals, 
-    	  			  "steps"  => $steps, 
-    	  			  "syncd"  => $syncd,
-    	  			  "habits" => $habits,
-    	  			  "sleep"  => $sleep,
-    	  			  "sleepq" => $sleepq,
-    	  			  "level"  => $level,
-    	  			  "active" => date("d") == date("d", $user_info['last_synced']) ? "1" : "0");
+
+    $user = array("id"     => $user['id'], 
+	  			  "name"   => $name, 
+	  			  "pulse"  => $pulse, 
+	  			  "cals"   => $cals, 
+	  			  "steps"  => $steps, 
+	  			  "syncd"  => $syncd,
+	  			  "habits" => $habits,
+	  			  "sleep"  => $sleep,
+	  			  "sleepq" => $sleepq,
+	  			  "level"  => $level,
+	  			  "active" => date("d") == date("d", $user_info['last_synced']) ? "1" : "0");
+
+     if($user['active'] == 1) $output[] = $user;
+     
 }
 
 $last_update = mysql_result(mysql_query("SELECT `updated` FROM `stats` ORDER BY `updated` DESC LIMIT 1"), 0);

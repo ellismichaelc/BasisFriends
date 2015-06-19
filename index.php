@@ -1,3 +1,10 @@
+<?php
+	
+$host = $_SERVER['HTTP_HOST'];
+if($host == "mcecreations.com") header("location: http://srv1.mcecreations.com/basis");
+	
+?>
+
 <!DOCTYPE html>
 <html lang="en">
  <head>
@@ -138,13 +145,13 @@
 			} else if(habit.state == "4" || ( habit.score >= habit.goal && habit.type == "below" )) {
 				// Failed (time sensitive)
 				class_name    = "progress-bar-danger";
-				percent_text  = "Failed";
+				percent_text  = "Failed!";
 				habit.percent = 100;
 			
 			} else if(habit.state == "13" || habit.state == "11" || habit.state == "9")  {
 				// Done
 				class_name = "progress-bar-success";
-				percent_text = "Complete!"
+				percent_text = "Done!"
 				habit.percent = 100;
 			
 			} else {
@@ -204,6 +211,12 @@
 			row.find("#data_syncd").html(moment(user.syncd).fromNow());
 			row.find("#data_sleep").html(sleep);
 			row.find("#data_sleepq").html(user.sleepq);
+			
+			$sync_ago   = moment().unix() - moment(user.syncd).unix();
+			$sync_limit = 60*60*2;
+			
+			if($sync_ago > $sync_limit) row.css('opacity', '0.5');
+			else row.css('opacity', '1');
 			
 			if(user.active == "1") {
 			
